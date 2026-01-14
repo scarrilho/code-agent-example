@@ -25,7 +25,7 @@ fun main() = runBlocking {
     ) {
         handleEvents {
             onLLMCallStarting { ctx ->
-                println("Request to LLM:\n  Messages: ${ctx.prompt.messages}\n  Tools: ${ctx.tools}")
+                ctx.tools.forEach { tool -> println("Tool: ${tool.name}") }
             }
             onLLMCallCompleted { ctx -> println("LLM response: ${ctx.responses}") }
         }
