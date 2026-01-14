@@ -1,0 +1,13 @@
+[versions]
+kotlin = "2.2.21"
+koog = "0.6.0"
+
+[libraries]
+koog-agents = { module = "ai.koog:koog-agents", version.ref = "koog" }
+koog-tools = { module = "ai.koog:agents-tools", version.ref = "koog" }
+koog-executor-openai-client = { module = "ai.koog:prompt-executor-openai-client", version.ref = "koog" }
+koog-features-event-handler = { module = "ai.koog:agents-features-event-handler", version.ref = "koog" }
+okio = { module = "com.squareup.okio:okio", version = "3.6.0" }
+
+[plugins]
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
