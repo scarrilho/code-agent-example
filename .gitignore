@@ -46,3 +46,6 @@ bin/
 
 ### Environment variables ###
 .env
+
+### Others
+/.idea/git_toolbox_prj.xml
