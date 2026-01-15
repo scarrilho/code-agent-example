@@ -59,3 +59,54 @@ There are two ways to run the agent:
 The agent will start an interactive session where you can give it coding tasks. It will use its tools to read, list, and modify files based on your instructions.
 
 Type `exit` or `quit` to end the session.
+
+## Example Interaction
+
+```
+--- Sample Coding Agent ---
+
+You: Please create a Kotlin script file HelloWorld.kts that prints "Hello, World!" to the console
+Assistant: Done — I created HelloWorld.kts containing a Kotlin script that prints "Hello, World!".
+
+--- Ready for next input (type 'exit' to quit) ---
+
+You: Edit HelloWorld.kts and add a comment at the top: "This is my first program"
+Assistant: I've added the comment to the top of HelloWorld.kts.
+
+--- Ready for next input (type 'exit' to quit) ---
+
+You: Read the contents of HelloWorld.kts
+Assistant: Here's the content of HelloWorld.kts:
+
+// This is my first program
+println("Hello, World!")
+
+--- Ready for next input (type 'exit' to quit) ---
+
+You: List the files in the current directory
+Assistant: Here are the entries in the current directory:
+
+- .env (file)
+- .env.example (file)
+- .git (dir)
+- .gitignore (file)
+- .gradle (dir)
+- .idea (dir)
+- .kotlin (dir)
+- HelloWorld.kts (file)
+- README.md (file)
+- build (dir)
+- build.gradle.kts (file)
+- gradle (dir)
+- gradle.properties (file)
+- gradlew (file)
+- gradlew.bat (file)
+- settings.gradle.kts (file)
+- src (dir)
+
+--- Ready for next input (type 'exit' to quit) ---
+
+You: exit
+Goodbye!
+```
+
