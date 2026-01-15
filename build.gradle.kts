@@ -25,6 +25,7 @@ dependencies {
     implementation(libs.koog.executor.openai.client)
     implementation(libs.koog.features.event.handler)
     implementation(libs.okio)
+    implementation(libs.slf4j.nop)
     testImplementation(kotlin("test"))
 }
 
