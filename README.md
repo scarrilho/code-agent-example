@@ -2,7 +2,7 @@
 
 ## About
 
-This is a simple coding agent built with [Koog](https://github.com/JetBrains/koog), a Kotlin framework for building AI agents by JetBrains.
+This is a simple coding agent built with [Koog](https://github.com/JetBrains/koog), supporting the article in Medium [Building an AI Coding Agent in <100 Lines of Kotlin](https://medium.com/@sergiocarrilho/building-an-ai-coding-agent-in-100-lines-of-kotlin-f9af28e6aeb0)
 
 It is inspired by the article [How to Build an Agent](https://ampcode.com/how-to-build-an-agent).
 
@@ -46,6 +46,8 @@ Add your OpenAI API key to the `.env` file:
 OPENAI_API_KEY=your-api-key-here
 ```
 
+Note: I know, keeping credentials in a file is unsafe. This .env file is used in this project for the sake of simplicity. 
+
 ## Running the Agent
 
 There are two ways to run the agent:
@@ -62,48 +64,40 @@ Type `exit` or `quit` to end the session.
 
 ## Example Interaction
 
+The first prompt uses the **editFile** tool to create and write contents to a file
 ```
 --- Sample Coding Agent ---
+You: Make me a new file in kotlin called HelloWorld.kts file and implement hello world in it
+LLM response: [Call(id=call_mpE6zrRSWsCfs9kbmBlV..., tool=editFile, parts=[Text(text={"path":"HelloWorld.kts","oldStr":"","newStr":"// HelloWorld.kts - Kotlin script\n// Run with: kotlinc -script HelloWorld.kts or kotlin HelloWorld.kts\n\nprintln(\"Hello, World!\")\n"})], metaInfo=ResponseMetaInfo(timestamp=..., totalTokensCount=459, inputTokensCount=323, outputTokensCount=136, additionalInfo={}, metadata=null))]
+tool: edit_file(~/Developer/code-agent-example/HelloWorld.kts)
+LLM response: [Assistant(parts=[Text(text=I created HelloWorld.kts with a simple Kotlin script that prints "Hello, World!"...
 
-You: Please create a Kotlin script file HelloWorld.kts that prints "Hello, World!" to the console
-Assistant: Done — I created HelloWorld.kts containing a Kotlin script that prints "Hello, World!".
+Assistant: I created HelloWorld.kts with a simple Kotlin script that prints "Hello, World!".
 
---- Ready for next input (type 'exit' to quit) ---
+// HelloWorld.kts - Kotlin script
+// Run with: kotlinc -script HelloWorld.kts or kotlin HelloWorld.kts
 
-You: Edit HelloWorld.kts and add a comment at the top: "This is my first program"
-Assistant: I've added the comment to the top of HelloWorld.kts.
-
---- Ready for next input (type 'exit' to quit) ---
-
-You: Read the contents of HelloWorld.kts
-Assistant: Here's the content of HelloWorld.kts:
-
-// This is my first program
 println("Hello, World!")
 
 --- Ready for next input (type 'exit' to quit) ---
+```
 
-You: List the files in the current directory
-Assistant: Here are the entries in the current directory:
+The next prompt uses the **readFile** to check for comments, and **editFile** to remove them
+```
+You: Remove all comments from the file HelloWorld.kts
 
-- .env (file)
-- .env.example (file)
-- .git (dir)
-- .gitignore (file)
-- .gradle (dir)
-- .idea (dir)
-- .kotlin (dir)
-- HelloWorld.kts (file)
-- README.md (file)
-- build (dir)
-- build.gradle.kts (file)
-- gradle (dir)
-- gradle.properties (file)
-- gradlew (file)
-- gradlew.bat (file)
-- settings.gradle.kts (file)
-- src (dir)
+LLM response: [Call(id=call_1dD9vhPwkRyzFYblrUMU...., tool=readFile, ...)
+tool: read_file(~/Developer/code-agent-example/HelloWorld.kts)
 
+LLM response: [Call(id=call_CHViKIW4NYqNIyUPRoRZ...., tool=editFile, ...]
+tool: edit_file(~/Developer/code-agent-example/HelloWorld.kts)
+
+LLM response: [Assistant(parts=[Text(text=I removed the comments and updated HelloWorld.kts. The file now contains:
+
+println("Hello, World!"))], metaInfo=ResponseMetaInfo(timestamp=...)]
+Assistant: I removed the comments and updated HelloWorld.kts. The file now contains:
+
+println("Hello, World!")
 --- Ready for next input (type 'exit' to quit) ---
 
 You: exit
