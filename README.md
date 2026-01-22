@@ -2,7 +2,7 @@
 
 ## About
 
-This is a simple coding agent built with [Koog](https://github.com/JetBrains/koog), supporting the article in Medium [Building an AI Coding Agent in <100 Lines of Kotlin](https://medium.com/@sergiocarrilho/building-an-ai-coding-agent-in-100-lines-of-kotlin-f9af28e6aeb0)
+This is a simple coding agent built with [Koog](https://github.com/JetBrains/koog), supporting the article in Medium [How an AI Coding Agent Works (in ~100 lines of Kotlin)](https://medium.com/@sergiocarrilho/building-an-ai-coding-agent-in-100-lines-of-kotlin-f9af28e6aeb0)
 
 It is inspired by the article [How to Build an Agent](https://ampcode.com/how-to-build-an-agent).
 
